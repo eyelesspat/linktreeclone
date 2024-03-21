@@ -10,4 +10,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+  devise_scope :user do
+    get '/users', to: 'devise/registration#new'
+    get '/users/password', to: 'devise/passwords#new'
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 end
